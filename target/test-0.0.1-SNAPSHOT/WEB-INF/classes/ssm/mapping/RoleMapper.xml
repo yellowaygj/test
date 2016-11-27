@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ssm.dao.RoleMapper">
+	<resultMap id="BaseResultMap" type="ssm.model.Role">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, name
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from role
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from role
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="ssm.model.Role">
+		insert into role (id, name)
+		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="ssm.model.Role">
+		insert into role
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="ssm.model.Role">
+		update role
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="ssm.model.Role">
+		update role
+		set
+		name = #{name,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<select id="getAll" resultMap="BaseResultMap" parameterType="Map">
+            	   
+		select * from role 
+		<where>
+			<if test="search != null and search != ''">
+				( id like '%${search}%' or name like '%${search}%' )
+			</if>
+			<if test="params.searchId != null and params.searchId != ''">
+				and id like '%${params.searchId}%'
+			</if>
+			<if test="params.searchName != null and params.searchName != ''">
+				and name like '%${params.searchName}%'
+			</if>
+		</where>
+		<if test="sort !=null and sort !=''">
+			order by ${sort} ${order}
+		</if>
+		limit ${offset},${limit}
+	</select>
+
+	<select id="getCount" resultType="java.lang.Integer"> 
+		select count(*) from role 
+		<where>
+			<if test="search != null and search != ''">
+				( id like '%${search}%' or name like '%${search}%' )
+			</if>
+			<if test="params.searchId != null and params.searchId != ''">
+				and id like '%${params.searchId}%'
+			</if>
+			<if test="params.searchName != null and params.searchName != ''">
+				and name like '%${params.searchName}%'
+			</if>
+		</where>
+	</select>
+	
+	<resultMap id="rolePerResultMap" type="ssm.model.RolePer">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result property="rid" column="rid"/>
+		<result property="pid" column="pid"/>
+	</resultMap>
+	
+	<select id="getrolePers" resultMap="rolePerResultMap"> 
+		select * from role_permission where rid = ${roleperid}
+	</select>
+	
+	<insert id="addrolePer" parameterType="ssm.model.RolePer">
+		insert into role_permission (rid, pid)
+		values (#{rid}, #{pid})
+	</insert>
+	
+	
+	<delete id="delrolePer" parameterType="ssm.model.RolePer">
+		delete from role_permission where rid=#{rid} and pid=#{pid}
+        
+	</delete>
+	
+	
+	<insert id="addPer" parameterType="ssm.model.Permission">
+		insert into Permission (`name`, `describe`, flevel, url)
+		
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="describe != null">
+				#{describe,jdbcType=VARCHAR},
+			</if>
+			<if test="flevel != null">
+				#{flevel,jdbcType=INTEGER},
+			</if>
+			<if test="url != null">
+				#{url,jdbcType=VARCHAR},
+			</if>
+		</trim>
+		
+	</insert>
+	
+	  
+	<update id="EditPer" parameterType="ssm.model.Permission">
+		update `Permission`
+		set
+		`name` = #{name,jdbcType=VARCHAR}, `describe` = #{describe,jdbcType=VARCHAR}, `url` = #{url,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	
+	
+	
+	<update id="setPerState" parameterType="ssm.model.Permission">
+		update `Permission`
+		set
+		`state` = 1
+		where id = #{state}
+	</update>
+	
+	
+	<delete id="DelPer" parameterType="java.lang.Integer">
+		delete from `Permission` where id = #{id}
+        
+	</delete>
+	
+	<delete id="delete" parameterType="list">
+		delete from role where id in
+        <foreach collection="list" item="ids"  open="(" separator="," close=")">     
+        	#{ids}
+    	</foreach> 
+	</delete>
+	
+</mapper>

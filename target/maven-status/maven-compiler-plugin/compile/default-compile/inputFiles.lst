@@ -1,0 +1,16 @@
+D:\Workspaces\MyEclipse 10\test\src\main\java\ssm\model\Permission.java
+D:\Workspaces\MyEclipse 10\test\src\main\java\ssm\service\IUserService.java
+D:\Workspaces\MyEclipse 10\test\src\main\java\ssm\service\IRoleService.java
+D:\Workspaces\MyEclipse 10\test\src\main\java\ssm\dao\BaseMapper.java
+D:\Workspaces\MyEclipse 10\test\src\main\java\ssm\dao\UserMapper.java
+D:\Workspaces\MyEclipse 10\test\src\main\java\ssm\dao\RoleMapper.java
+D:\Workspaces\MyEclipse 10\test\src\main\java\ssm\service\impl\RoleServiceImpl.java
+D:\Workspaces\MyEclipse 10\test\src\main\java\ssm\model\User.java
+D:\Workspaces\MyEclipse 10\test\src\main\java\ssm\model\UserRole.java
+D:\Workspaces\MyEclipse 10\test\src\main\java\ssm\dao\UserRoleMapper.java
+D:\Workspaces\MyEclipse 10\test\src\main\java\ssm\model\RolePer.java
+D:\Workspaces\MyEclipse 10\test\src\main\java\ssm\model\treeNodeModel.java
+D:\Workspaces\MyEclipse 10\test\src\main\java\ssm\service\impl\UserServiceImpl.java
+D:\Workspaces\MyEclipse 10\test\src\main\java\ssm\controller\UserController.java
+D:\Workspaces\MyEclipse 10\test\src\main\java\ssm\controller\RoleController.java
+D:\Workspaces\MyEclipse 10\test\src\main\java\ssm\model\Role.java

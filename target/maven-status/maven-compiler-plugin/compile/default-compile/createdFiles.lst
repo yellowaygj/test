@@ -1,0 +1,16 @@
+ssm\dao\UserMapper.class
+ssm\controller\RoleController.class
+ssm\service\impl\UserServiceImpl.class
+ssm\model\User.class
+ssm\service\IRoleService.class
+ssm\dao\UserRoleMapper.class
+ssm\dao\RoleMapper.class
+ssm\model\Permission.class
+ssm\controller\UserController.class
+ssm\model\treeNodeModel.class
+ssm\model\Role.class
+ssm\model\UserRole.class
+ssm\service\IUserService.class
+ssm\service\impl\RoleServiceImpl.class
+ssm\model\RolePer.class
+ssm\dao\BaseMapper.class

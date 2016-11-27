@@ -1,0 +1,17 @@
+{
+    "roles": [
+        {
+            "id": 1,
+            "name": "admin"
+        },
+        {
+            "id": 2,
+            "name": "guest"
+        },
+        {
+            "id": 3,
+            "name": "db"
+        }
+    ]
+}
+	
